@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
 
-# --- Part 1 & 2: Data Loading, Cleaning, and Preparation ---
+# --- Data Loading, Cleaning, and Preparation ---
 
 # Load the data and cache it for efficiency.
 # The `st.cache_data` decorator tells Streamlit to run the function
@@ -49,7 +49,7 @@ if df.empty:
 min_year = int(df['year'].min())
 max_year = int(df['year'].max())
 
-# --- Part 4: Streamlit Application Layout ---
+# ---  Streamlit Application Layout ---
 
 st.title("CORD-19 Research Paper Explorer 📊")
 st.markdown("A simple data exploration of the COVID-19 Open Research Dataset (CORD-19) focusing on the metadata.")
@@ -71,12 +71,12 @@ df_filtered = df[(df['year'] >= year_range[0]) & (df['year'] <= year_range[1])]
 # Display a brief summary of the filtered data
 st.info(f"Showing **{len(df_filtered)}** papers published between **{year_range[0]}** and **{year_range[1]}**.")
 
-# --- Part 3: Data Analysis and Visualization ---
+# --- Data Analysis and Visualization ---
 
 st.header("Analysis & Visualizations")
 st.markdown("Here are some key insights from the dataset within the selected time frame.")
 
-# --- Plot 1: Publications Over Time ---
+# --- Publications Over Time ---
 st.subheader("1. Publications by Year")
 st.markdown("This bar chart shows the total number of papers published each year.")
 
@@ -94,7 +94,7 @@ st.pyplot(fig)
 
 st.markdown("The chart clearly illustrates the rapid growth in COVID-19 research from 2020 onwards, as the pandemic unfolded.")
 
-# --- Plot 2: Top Publishing Journals ---
+# --- Top Publishing Journals ---
 st.subheader("2. Top Publishing Journals")
 st.markdown("This chart highlights the journals that have published the most papers on the subject.")
 
@@ -110,7 +110,7 @@ st.pyplot(fig)
 
 st.markdown("We can see that a few key journals have been at the forefront of disseminating research during this period.")
 
-# --- Plot 3: Word Cloud of Paper Titles ---
+# --- Word Cloud of Paper Titles ---
 st.subheader("3. Most Frequent Words in Titles")
 st.markdown("This word cloud visualizes the most common words found in the paper titles, giving a quick overview of the research topics.")
 
@@ -139,12 +139,12 @@ else:
 
 st.markdown("The most prominent words often represent the central themes of the research, such as 'virus', 'pandemic', and 'patients'.")
 
-# --- Part 5: Sample of the Data ---
+# ---Sample of the Data ---
 st.header("Sample Data")
 st.markdown("Below is a sample of the cleaned data to give you a sense of its structure.")
 st.dataframe(df_filtered[['title', 'authors', 'journal', 'year', 'abstract']].head(10))
 
-# --- Part 6: Documentation and Reflection ---
+# --- Documentation and Reflection ---
 st.sidebar.header("About This App")
 st.sidebar.info(
     "This application was built as a data science project to demonstrate "
@@ -152,4 +152,5 @@ st.sidebar.info(
     "**matplotlib** and **wordcloud** for visualization, and **Streamlit** "
     "to create an interactive web application. It showcases basic exploratory "
     "data analysis (EDA) techniques on a real-world dataset."
+
 )
